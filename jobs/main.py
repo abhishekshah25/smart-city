@@ -61,7 +61,7 @@ def generate_weather_data(vehicle_id, timestamp, location):
         'timestamp': timestamp,
         'temperature': random.uniform(25,45),
         'weatherCondition': random.choice(['Sunny','Humid','Cloudy','Rain']),
-        'precipitation': random.choice(30,75),
+        'precipitation': random.uniform(30,75),
         'windSpeed': random.uniform(0,50),
         'humidity': random.randint(45,100),
         'airQualityIndex': random.uniform(225,500)
