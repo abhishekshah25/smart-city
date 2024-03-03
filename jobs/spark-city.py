@@ -1,5 +1,6 @@
 from config import configuration
 from pyspark.sql import SparkSession
+from pyspark.sql.DataFrame import DataFrame
 from pyspark.sql.functions import from_json, col
 from pyspark.sql.types import StructType,StructField, StringType,TimestampType, IntegerType, DoubleType
 
@@ -86,6 +87,10 @@ def main():
             .select('data.*')
             .withWatermark('timestamp', '2 minutes'))
             
+  def streamWriter(input: DataFrame,checkPointFolder, output):
+    return (input.writeStream
+            .format('parquet'))
+
 
   vehicleDF = read_kafka_topic('vehicle_data', vehicleSchema).alias('vehicle')
   gpsDF = read_kafka_topic('gps_data', gpsSchema).alias('gps')
