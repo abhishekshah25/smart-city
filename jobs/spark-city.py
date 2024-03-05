@@ -13,7 +13,7 @@ def main():
   .config("spark.hadoop.fs.s3a.impl","org.apache.hadoop.fs.s3a.S3AFileSystem")\
   .config("spark.hadoop.fs.s3a.access.key", configuration.get('AWS_ACCESS_KEY'))\
   .config("spark.hadoop.fs.s3a.secret.key", configuration.get('AWS_SECRET_KEY'))\
-  .config("spark.hadoop.fs.s3a.aws.credentials.provider","org.apache.hadoop.fs.s3a.impl.SimpleAWSCredentialsProvider")\
+  .config("spark.hadoop.fs.s3a.aws.credentials.provider","org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider")\
   .getOrCreate()        
 
   # Adjust log level to minimize the console output on executors
@@ -82,7 +82,7 @@ def main():
             .option('subscribe', topic)
             .option('startingOffsets', 'earliest')
             .load()
-            .selectExpr('CAST(values AS STRING')
+            .selectExpr('CAST(value AS STRING)')
             .select(from_json(col('value'), schema).alias('data'))
             .select('data.*')
             .withWatermark('timestamp', '2 minutes'))
