@@ -89,8 +89,12 @@ def main():
             
   def streamWriter(input: DataFrame,checkPointFolder, output):
     return (input.writeStream
-            .format('parquet'))
-
+            .format('parquet')
+            .option('checkpointLocation', checkPointFolder)
+            .option('path',output)
+            .outputMode('append')
+            .start()
+            )
 
   vehicleDF = read_kafka_topic('vehicle_data', vehicleSchema).alias('vehicle')
   gpsDF = read_kafka_topic('gps_data', gpsSchema).alias('gps')
@@ -100,6 +104,13 @@ def main():
 
   # Join all the DFs with id and timestamp
 
+  vehicle_query = streamWriter(vehicleDF,'s3a://smart-city-spark-stream-data/checkpoints/vehicle_data','s3a://smart-city-spark-stream-data/data/vehicle_data')
+  gps_query = streamWriter(gpsDF,'s3a://smart-city-spark-stream-data/checkpoints/gps_data','s3a://smart-city-spark-stream-data/data/gps_data')
+  traffic_query = streamWriter(trafficDF,'s3a://smart-city-spark-stream-data/checkpoints/traffic_data','s3a://smart-city-spark-stream-data/data/traffic_data')
+  weather_query = streamWriter(weatherDF,'s3a://smart-city-spark-stream-data/checkpoints/weather_data','s3a://smart-city-spark-stream-data/data/weather_data')
+  emergency_query = streamWriter(emergencyDF,'s3a://smart-city-spark-stream-data/checkpoints/emergency_data','s3a://smart-city-spark-stream-data/data/emergency_data')     
+
+  emergency_query.awaitTermination()
 
 if __name__ == "__main__":
   main()
