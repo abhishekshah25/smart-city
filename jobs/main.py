@@ -150,7 +150,7 @@ def simulate_journey(producer, vehicle_id):
         produce_data_to_kafka(producer,WEATHER_TOPIC,weather_data)
         produce_data_to_kafka(producer,EMERGENCY_TOPIC,emergency_data)
 
-        time.sleep(5)
+        time.sleep(2)
 
 if __name__ == "main":
 
