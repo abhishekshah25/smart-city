@@ -6,7 +6,7 @@ import simplejson as json
 from datetime import datetime, timedelta
 from confluent_kafka import SerializingProducer
 
-# Co-ordinates extracted from internet
+# Coordinates extracted from internet
 BENGALURU_COORDINATES = {
     "latitude": 12.9715,
     "longitude": 77.5945
