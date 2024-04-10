@@ -5,7 +5,6 @@ from pyspark.sql.functions import from_json, col
 from pyspark.sql.types import StructType,StructField, StringType,TimestampType, IntegerType, DoubleType
 
 def main():
-  
   spark = SparkSession.builder.appName("SmartCityStreaming")\
   .config("spark.jars.packages", 
           "org.apache.spark:spark-sql-kafka-0-10_2.13:3.5.0",
@@ -20,7 +19,6 @@ def main():
   # Adjust log level to minimize the console output on executors
   spark.sparkContext.setLogLevel('WARN')
 
-  # Schemas
   vehicleSchema = StructType([
     StructField("id", StringType(), True),
     StructField("vehicleId", StringType(), True),
