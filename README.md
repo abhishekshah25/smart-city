@@ -8,4 +8,4 @@
 
 3. spark-city.py - It contains the logic to consume the data from the Kafka topic and stream it to the Amazon S3 buckets.
 
-Furthermore, the data pushed into the S3 buckets is transformed using AWS Glue Crawler and viewed using Amazon Athena. This data is then written into Redshift using the AWS Glue Data Catalog.
+Furthermore, the data pushed into the AWS S3 buckets is transformed using AWS Glue Crawler and viewed using Amazon Athena. This data is then written into Redshift using the AWS Glue Data Catalog.
