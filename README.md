@@ -2,7 +2,7 @@
 
 ### System Components
 
-1. docker-compose.yml - It creates the environment in which the kafka broker, spark nodes are hosted.
+1. docker-compose.yml - It creates the environment in which the kafka broker, zookeeper and spark nodes are hosted.
 
 2. main.py - It has the necessary functions surrounding the creation of incoming data as well as create the Kafka topic and produce data on to the topic.
 
