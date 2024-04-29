@@ -32,7 +32,7 @@ services:
           'CMD',
           'bash',
           '-c',
-          "echo 'Is it okay!' | nc localhost 2181"
+          "echo 'Is it okay?' | nc localhost 2181"
         ]
       interval: 10s
       timeout: 5s
