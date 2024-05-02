@@ -101,7 +101,7 @@ def main():
   weatherDF = read_kafka_topic('weather_data', weatherSchema).alias('weather')
   emergencyDF = read_kafka_topic('emergency_data', emergencySchema).alias('emergency')
 
-  # Join all the DFs with id and timestamp
+  # Join all the DFs with id and timestamps
 
   vehicle_query = streamWriter(vehicleDF,'s3a://smart-city-spark-stream-data/checkpoints/vehicle_data','s3a://smart-city-spark-stream-data/data/vehicle_data')
   gps_query = streamWriter(gpsDF,'s3a://smart-city-spark-stream-data/checkpoints/gps_data','s3a://smart-city-spark-stream-data/data/gps_data')
