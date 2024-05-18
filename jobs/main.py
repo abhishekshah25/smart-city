@@ -6,7 +6,7 @@ import simplejson as json
 from datetime import datetime, timedelta
 from confluent_kafka import SerializingProducer
 
-# Geospatial Coordinates of Cities 
+# Geospatial coordinates of the cities 
 BENGALURU_COORDINATES = {
     "latitude": 12.9715,
     "longitude": 77.5945
